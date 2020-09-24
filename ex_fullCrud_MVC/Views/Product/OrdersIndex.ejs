@@ -1,0 +1,14 @@
+<% layout('../layouts/mainlayout.ejs') -%>
+<br/><br/>
+<b>Orders Listing</b>
+<br/><br/>
+<table>
+<% for (var i = 0; i < orders.length; i++) { %>
+    <tr>
+      <td><b>Date and Time:</b><%= orders[i].dateTime %></td>
+      <td><b>Server Name:</b> <%= orders[i].serverName %></td>
+      <td><b>Total:</b> <%= orders[i].total %></td>
+    </tr>
+ <% } %>
+</table>
+

@@ -1,0 +1,45 @@
+<style>
+    #pad-right {
+        padding-right: 100px;
+    }
+    #align-right {
+        text-align: right;
+    }
+    p {
+        display: inline;
+        padding-left: 20px;
+    }
+</style>
+<h3><u>Add Menu Item</u></h3>
+<b>ID</b> <br/>
+<input type="text" name="id"  #id="ngModel" [(ngModel)]="_id" required/>
+<p *ngIf="id?.errors?.required">ID is required.</p> <br/><br/>
+
+<b>Item Name</b> <br/>
+<input type="text" name="itemName" #itemName="ngModel" [(ngModel)]="_productName" required/> 
+<p *ngIf="itemName?.errors?.required">Item name is required.</p> <br/><br/>
+
+<b>Price</b> <br/>
+<input type="text" name="price" #price="ngModel" [(ngModel)]="_price" required/> 
+<p *ngIf="price?.errors?.required">Price is required.</p> <br/><br/>
+
+<input type="submit" value="Create Item" (click)="createProduct()"> <br/><br/>
+
+<h3><u>Menu Items</u></h3>
+<table>
+    <tr *ngFor="let product of _productsArray">
+        <td>
+            <b>{{product._id}}</b>
+        </td>
+        <td id="pad-right">
+            {{product.productName}}
+        </td>
+        <td id="align-right">
+            ${{product.price.toFixed(2)}}
+        </td>
+        <td>
+            <input type="submit" value="Delete" (click)="deleteProduct(product._id)">
+        </td>
+    </tr>
+</table>
+<br/>
